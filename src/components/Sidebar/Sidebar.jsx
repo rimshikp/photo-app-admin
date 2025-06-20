@@ -5,7 +5,7 @@ import {
   faTags,
   faImages,
   faCamera,
-  faUser
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Sidebar.module.css";
 export default function Sidebar({ isOpen, closeSidebar, isMobile }) {
@@ -16,8 +16,8 @@ export default function Sidebar({ isOpen, closeSidebar, isMobile }) {
       }`}
     >
       <div className={styles.sidebarContent}>
-        <div className={styles.logo}>
-          <img src="/logo.svg" alt="Logo" />
+        <div className={styles.logo} style={{marginTop:10}}>
+          {/* <img src="/logo.svg" alt="Logo" /> */}
         </div>
         <nav className={styles.nav}>
           <ul>
@@ -28,7 +28,10 @@ export default function Sidebar({ isOpen, closeSidebar, isMobile }) {
                 className={({ isActive }) => (isActive ? styles.active : "")}
                 onClick={isMobile ? closeSidebar : null}
               >
-                <FontAwesomeIcon icon={faTachometerAlt} className={styles.icon} />
+                <FontAwesomeIcon
+                  icon={faTachometerAlt}
+                  className={styles.icon}
+                />
                 <span>Dashboard</span>
               </NavLink>
             </li>
@@ -43,8 +46,6 @@ export default function Sidebar({ isOpen, closeSidebar, isMobile }) {
               </NavLink>
             </li>
 
-            
-
             <li>
               <NavLink
                 to="/dashboard/customers"
@@ -56,8 +57,7 @@ export default function Sidebar({ isOpen, closeSidebar, isMobile }) {
               </NavLink>
             </li>
 
-
- <li>
+            <li>
               <NavLink
                 to="/dashboard/models"
                 className={({ isActive }) => (isActive ? styles.active : "")}
@@ -68,8 +68,7 @@ export default function Sidebar({ isOpen, closeSidebar, isMobile }) {
               </NavLink>
             </li>
 
-
-            <li>
+            {/* <li>
               <NavLink
                 to="/dashboard/upload"
                 className={({ isActive }) => (isActive ? styles.active : "")}
@@ -78,9 +77,7 @@ export default function Sidebar({ isOpen, closeSidebar, isMobile }) {
                 <FontAwesomeIcon icon={faCamera} className={styles.icon} />
                 <span>Upload</span>
               </NavLink>
-            </li>
-
-           
+            </li> */}
           </ul>
         </nav>
       </div>

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-import {  useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,7 +11,7 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Header.module.css";
-import whiteLogo from '../../assets/color-logo-workfoto.png'
+import whiteLogo from "../../assets/color-logo-workfoto.png";
 export default function Header({ toggleSidebar, isMobile, isSidebarOpen }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
@@ -29,9 +29,9 @@ export default function Header({ toggleSidebar, isMobile, isSidebarOpen }) {
     }
   };
 
-   const logout = () => {
-    localStorage.removeItem('authToken');
-    navigate('/sign-in');
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/sign-in");
   };
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -49,24 +49,24 @@ export default function Header({ toggleSidebar, isMobile, isSidebarOpen }) {
           </button>
         )}
         <div className={styles.logo}>
-          <img src={whiteLogo   } alt="Logo" />
+          <img src={whiteLogo} alt="Logo" />
         </div>
       </div>
       <div className={styles.profileSection} ref={dropdownRef}>
         <button className={styles.profileButton} onClick={toggleDropdown}>
           {/* <FontAwesomeIcon icon={faUser} /> */}
           {user.profile ? (
-                  <img
-                    src={user.profile}
-                    alt="Profile"
-                    className={styles.profileImage}
-                  />
-                ) : (
-                  <FontAwesomeIcon
-                    icon={faUserCircle}
-                    className={styles.profileIcon}
-                  />
-                )}
+            <img
+              src={user.profile}
+              alt="Profile"
+              className={styles.profileImage}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faUserCircle}
+              className={styles.profileIcon}
+            />
+          )}
         </button>
         {isDropdownOpen && (
           <div className={styles.dropdown}>
