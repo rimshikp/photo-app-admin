@@ -4,7 +4,6 @@ import Customers from "./dashboard/customers/index.jsx";
 import PhotoGraphers from "./dashboard/photographers/index.jsx";
 import Events from "./dashboard/events/index.jsx";
 
-
 import Photos from "./dashboard/Photos";
 import Login from "./pages/login/index";
 import SignUp from "./pages/signup/index";
@@ -14,9 +13,9 @@ import ResetPassword from "./pages/reset-password/index";
 import ProtectedRoute from "./utils/ProtectedRoute.jsx";
 import NotFound from "./pages/not-found/index";
 import PhotoUpload from "./dashboard/upload/index.jsx";
-import PhotoGrapherDetails from './dashboard/photographer-details/index.jsx'
-import PhotoDetailPage from "./dashboard/photographer-details/photo-details/index.jsx"
-
+import PhotoGrapherDetails from "./dashboard/photographer-details/index.jsx";
+import PhotoDetailPage from "./dashboard/photographer-details/photo-details/index.jsx";
+import CustomerDetails from "./dashboard/customer-details/index.jsx"
 const routes = [
   {
     path: "/",
@@ -59,37 +58,37 @@ const routes = [
         path: "/dashboard/customers",
         element: <Customers />,
       },
-       {
+      {
         path: "/dashboard/photographers",
         element: <PhotoGraphers />,
       },
-       {
+      {
         path: "/dashboard/photographers/:id",
         element: <PhotoGrapherDetails />,
       },
-        {
+      {
+        path: "/dashboard/customers/:id",
+        element: <CustomerDetails />,
+      },
+      {
         path: "/dashboard/photographers/:id/gallery/:photo_id",
         element: <PhotoDetailPage />,
       },
-      
+
       {
         path: "/dashboard/models",
         element: <Events />,
       },
 
-
-    
-       {
+      {
         path: "/dashboard/upload",
         element: <PhotoUpload />,
       },
-      
+
       {
         path: "/dashboard/photos",
         element: <Photos />,
       },
-    
- 
     ],
   },
   {

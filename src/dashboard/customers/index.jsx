@@ -7,10 +7,14 @@ import {
   faSearch,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./Customers.module.css";
 import { api } from "../../utils/api";
 
 export default function Customers() {
+  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -57,7 +61,9 @@ export default function Customers() {
 
   const handleDelete = async () => {
     try {
-      const response = await api.post(`/users/delete-user`,{id:itemToDelete});
+      const response = await api.post(`/users/delete-user`, {
+        id: itemToDelete,
+      });
       if (response?.data?.status) {
         setShowDeleteModal(false);
         setItemToDelete(null);
@@ -69,7 +75,9 @@ export default function Customers() {
       setError(err?.response?.data?.message || "Server Error");
     }
   };
-
+  const handleRowClick = (photographerId) => {
+    navigate(`/dashboard/customers/${photographerId}`);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -127,7 +135,11 @@ export default function Customers() {
               </thead>
               <tbody>
                 {data?.map((item, index) => (
-                  <tr key={item.id} className={styles.tr}>
+                  <tr
+                    key={item.id}
+                    className={styles.tr}
+                    onClick={() => handleRowClick(item._id)}
+                  >
                     <td className={styles.td}>
                       {(currentPage - 1) * itemsPerPage + index + 1}
                     </td>
@@ -154,9 +166,9 @@ export default function Customers() {
                           styles.deleteButton
                         )}
                         onClick={(e) => {
-      e.stopPropagation(); 
-      confirmDelete(item._id);
-    }}
+                          e.stopPropagation();
+                          confirmDelete(item._id);
+                        }}
                         aria-label="Delete"
                       >
                         <FontAwesomeIcon icon={faTrash} />

@@ -82,7 +82,13 @@
   align-items: center;
   gap: 8px;
 }
+.tr {
+  transition: background-color 0.2s ease;
+}
 
+.tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
 .addButton:hover {
   background: #535bf2;
 }
@@ -540,4 +546,13 @@
 .emptyStateAction:hover {
   background: rgb(30 58 138);
   transform: translateY(-2px);
+}
+
+.tr {
+  transition: background-color 0.2s ease;
+}
+
+.tr:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  cursor: pointer;
 }
